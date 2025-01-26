@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\WaliKelasController;
+use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\JenjangPendidikanController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Profile;
@@ -60,4 +64,41 @@ Route::prefix('guru')->group(function () {
     Route::get('/edit/{guru}', [GuruController::class,'edit'])->name('guru.edit');
     Route::patch('/edit/{guru}', [GuruController::class,'update'])->name('guru.update');
     Route::delete('/{guru}', [GuruController::class,'delete'])->name('guru.delete');
+})->middleware('auth');
+
+Route::prefix('siswa')->group(function () {
+    Route::get('', [SiswaController::class, 'index'])->name('siswa.index'); // Halaman utama daftar siswa
+    Route::get('/create', [SiswaController::class, 'create'])->name('siswa.create'); // Form untuk menambah siswa baru
+    Route::post('/create', [SiswaController::class, 'store'])->name('siswa.store'); // Proses menyimpan siswa baru
+    Route::get('/edit/{siswa}', [SiswaController::class, 'edit'])->name('siswa.edit'); // Form untuk mengedit data siswa
+    Route::put('/edit/{siswa}', [SiswaController::class, 'update'])->name('siswa.update'); // Proses update data siswa
+    Route::delete('/{siswa}', [SiswaController::class, 'delete'])->name('siswa.delete'); // Hapus data siswa
+})->middleware('auth');
+
+Route::prefix('kelas')->group(function () {
+    Route::get('', [KelasController::class, 'index'])->name('kelas.index');
+    Route::get('/add', [KelasController::class, 'create'])->name('kelas.create');
+    Route::post('/add', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('/edit/{kelas}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::patch('/edit/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('/{kelas}', [KelasController::class, 'delete'])->name('kelas.delete');
+})->middleware('auth');
+
+Route::prefix('wali-kelas')->group(function () {
+    Route::get('', [WaliKelasController::class, 'index'])->name('wali-kelas.index');
+    Route::get('/add', [WaliKelasController::class, 'create'])->name('wali-kelas.create');  // Metode GET untuk form tambah wali kelas
+    Route::post('/add', [WaliKelasController::class, 'store'])->name('wali-kelas.store');  // Metode POST untuk menyimpan data
+    Route::get('/edit/{waliKelas}', [WaliKelasController::class, 'edit'])->name('wali-kelas.edit');
+    Route::patch('/edit/{waliKelas}', [WaliKelasController::class, 'update'])->name('wali-kelas.update');
+    Route::delete('/{waliKelas}', [WaliKelasController::class, 'delete'])->name('wali-kelas.delete');
+})->middleware('auth');
+
+
+Route::prefix('mata-pelajaran')->group(function () {
+    Route::get('', [MataPelajaranController::class, 'index'])->name('mata-pelajaran.index');
+    Route::get('/add', [MataPelajaranController::class, 'create'])->name('mata-pelajaran.create');
+    Route::post('/add', [MataPelajaranController::class, 'store'])->name('mata-pelajaran.store');
+    Route::get('/edit/{mataPelajaran}', [MataPelajaranController::class, 'edit'])->name('mata-pelajaran.edit');
+    Route::patch('/edit/{mataPelajaran}', [MataPelajaranController::class, 'update'])->name('mata-pelajaran.update');
+    Route::delete('/{mataPelajaran}', [MataPelajaranController::class, 'delete'])->name('mata-pelajaran.delete');
 })->middleware('auth');

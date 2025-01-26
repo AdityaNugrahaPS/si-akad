@@ -33,18 +33,52 @@ return [
         'text' => 'Profil Lembaga'
       ],
       [
+        'url' => '/tahun-pelajaran',
+        'icon' => 'fa fa-calendar',
+        'text' => 'Tahun Pelajaran'
+      ],
+      [
         'icon' => 'fa fa-graduation-cap',
         'text' => 'Data Akademik',
         'children' => [
           [
-            'url' => '/jenjang-pendidikan',
-            'text' => 'Jenjang Pendidikan'
+            'url' => '/siswa',
+            'text' => 'Siswa'
+          ],
+          [
+            'url' => '/kelas',
+            'text' => 'Kelas'
+          ],
+          [
+            'url' => '/rombel',
+            'text' => 'Rombel'
+          ],
+          [
+            'url' => '/wali-kelas',
+            'text' => 'Wali Kelas'
           ],
           [
             'url' => '/guru',
             'text' => 'Guru'
+          ],
+          [
+            'url' => '/mata-pelajaran',
+            'text' => 'Mata Pelajaran'
+          ],
+          [
+            'url' => '/pengajar',
+            'text' => 'Pengajar'
+          ],
+          [
+            'url' => '/jenjang-pendidikan',
+            'text' => 'Jenjang Pendidikan'
           ]
         ]
       ],
+      [
+        'url' => '/datapengguna',
+        'icon' => 'fa fa-users',
+        'text' => 'Data Pengguna'
+      ]
     ]
 ];
