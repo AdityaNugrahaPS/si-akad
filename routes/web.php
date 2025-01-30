@@ -6,6 +6,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\WaliKelasController;
 use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\JenjangPendidikanController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Profile;
@@ -101,4 +102,13 @@ Route::prefix('mata-pelajaran')->group(function () {
     Route::get('/edit/{mataPelajaran}', [MataPelajaranController::class, 'edit'])->name('mata-pelajaran.edit');
     Route::patch('/edit/{mataPelajaran}', [MataPelajaranController::class, 'update'])->name('mata-pelajaran.update');
     Route::delete('/{mataPelajaran}', [MataPelajaranController::class, 'delete'])->name('mata-pelajaran.delete');
+})->middleware('auth');
+
+Route::prefix('pengajar')->group(function () {
+    Route::get('', [PengajarController::class, 'index'])->name('pengajar.index');
+    Route::get('/add', [PengajarController::class, 'create'])->name('pengajar.create');
+    Route::post('/add', [PengajarController::class, 'store'])->name('pengajar.store');
+    Route::get('/edit/{pengajar}', [PengajarController::class, 'edit'])->name('pengajar.edit');
+    Route::patch('/edit/{pengajar}', [PengajarController::class, 'update'])->name('pengajar.update');
+    Route::delete('/{pengajar}', [PengajarController::class, 'delete'])->name('pengajar.delete');
 })->middleware('auth');
