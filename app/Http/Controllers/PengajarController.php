@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengajar;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class PengajarController extends Controller
@@ -13,7 +14,8 @@ class PengajarController extends Controller
     }
 
     public function create(Request $request) {
-        return view("pages.pengajar.create");
+        $gurus = Guru::get();
+        return view("pages.pengajar.create", ["gurus" => $gurus]);
     }
 
     public function store(Request $request) {
@@ -30,7 +32,11 @@ class PengajarController extends Controller
     }
 
     public function edit(Pengajar $pengajar) {
-        return view("pages.pengajar.edit", ["pengajar" => $pengajar]);
+        $gurus = Guru::get();
+        return view("pages.pengajar.edit", [
+            "pengajar" => $pengajar,
+            "gurus" => $gurus
+        ]);
     }
 
     public function update(Request $request, Pengajar $pengajar) {
