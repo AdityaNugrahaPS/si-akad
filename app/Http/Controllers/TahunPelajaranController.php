@@ -72,4 +72,20 @@ class TahunPelajaranController extends Controller
         $tahunPelajaran->delete();
         return redirect()->route('tahun-pelajaran.index')->with('success', 'Data berhasil dihapus');
     }
+
+    public function aktifkan($id)
+    {
+        // Menemukan tahun pelajaran yang ingin diaktifkan
+        $tahunPelajaran = TahunPelajaran::findOrFail($id);
+    
+        // Cek jika ada tahun pelajaran yang sudah aktif, ubah jadi tidak aktif
+        TahunPelajaran::where('status', 'Aktif')->update(['status' => 'Tidak Aktif']);
+    
+        // Aktifkan tahun pelajaran yang dipilih
+        $tahunPelajaran->status = 'Aktif';
+        $tahunPelajaran->save();
+    
+        return redirect()->route('tahun-pelajaran.index')->with('success', 'Tahun Pelajaran berhasil diaktifkan.');
+    }
+    
 }

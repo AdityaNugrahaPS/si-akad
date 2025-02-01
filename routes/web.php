@@ -128,4 +128,5 @@ Route::prefix('tahun-pelajaran')->group(function () {
     Route::get('/edit/{tahunPelajaran}', [TahunPelajaranController::class, 'edit'])->name('tahun-pelajaran.edit');
     Route::patch('/edit/{tahunPelajaran}', [TahunPelajaranController::class, 'update'])->name('tahun-pelajaran.update');
     Route::delete('/{tahunPelajaran}', [TahunPelajaranController::class, 'delete'])->name('tahun-pelajaran.delete'); // Menggunakan method delete sesuai controller
+    Route::post('/tahun-pelajaran/{id}/aktifkan', [TahunPelajaranController::class, 'aktifkan'])->name('tahun-pelajaran.aktifkan');
 });
