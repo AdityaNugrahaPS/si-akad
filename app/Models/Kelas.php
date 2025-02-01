@@ -16,6 +16,12 @@ class Kelas extends Model
         'kode_kelas',
     ];
 
+    // Relasi dengan WaliKelas
+    public function waliKelas()
+    {
+        return $this->hasMany(WaliKelas::class);  // Kelas bisa memiliki banyak WaliKelas
+    }
+
     // Aturan validasi model
     public static $rules = [
         'tingkat' => 'required|string|in:10,11,12',

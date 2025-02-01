@@ -9,17 +9,27 @@ class WaliKelas extends Model
 {
     use HasFactory;
 
-    // Kolom yang dapat diisi massal
     protected $fillable = [
-        'nama_guru',
+        'guru_id',  // Menambahkan kolom guru_id untuk relasi
+        'kelas_id', // Menambahkan kolom kelas_id untuk relasi
         'tingkat',
-        'nama_kelas',
     ];
 
-    // Aturan validasi model
+    // Relasi dengan Guru
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id');  // Menunjukkan bahwa WaliKelas berhubungan dengan Guru
+    }
+
+    // Relasi dengan Kelas
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id');  // Menunjukkan bahwa WaliKelas berhubungan dengan Kelas
+    }
+
     public static $rules = [
-        'nama_guru' => 'required|string|max:255',
+        'guru_id' => 'required|exists:gurus,id',  // Validasi guru_id harus ada di tabel guru
+        'kelas_id' => 'required|exists:kelas,id',  // Validasi kelas_id harus ada di tabel kelas
         'tingkat' => 'required|string|in:10,11,12',
-        'nama_kelas' => 'required|string|max:255',
     ];
 }

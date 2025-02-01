@@ -3,46 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\WaliKelas;
+use App\Models\Guru;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 class WaliKelasController extends Controller
 {
-    public function index() {
-        $waliKelas = WaliKelas::get();
+    public function index()
+    {
+        $waliKelas = WaliKelas::with('guru', 'kelas')->get(); // Mengambil data wali kelas beserta guru dan kelas
         return view("pages.wali-kelas.index", ["waliKelas" => $waliKelas]);
     }
 
-    public function create(Request $request) {
-        return view("pages.wali-kelas.create");
+    public function create(Request $request)
+    {
+        // Ambil semua guru dan kelas untuk dropdown
+        $gurus = Guru::all();
+        $kelas = Kelas::all();
+        return view("pages.wali-kelas.create", compact('gurus', 'kelas'));
     }
 
-    public function store(Request $request) {
+
+
+    public function edit(WaliKelas $waliKelas)
+    {
+        $gurus = Guru::all(); // Ambil data guru
+        $kelas = Kelas::all(); // Ambil data kelas
+        return view("pages.wali-kelas.edit", compact('waliKelas', 'gurus', 'kelas'));
+    }
+
+    public function store(Request $request)
+    {
         $validated = $request->validate([
-            "nama_guru" => "required|string|max:255", // Validasi untuk nama guru
+            "guru_id" => "required|exists:gurus,id", // Validasi untuk guru
+            "kelas_id" => "required|exists:kelas,id", // Validasi untuk kelas
             "tingkat" => "required|string|in:10,11,12",  // Validasi untuk tingkat kelas
-            "nama_kelas" => "required|string|max:255",
         ]);
 
+        // Menyimpan data wali kelas dengan ID guru dan kelas
         WaliKelas::create($validated);
         return redirect()->route('wali-kelas.index')->with("success", "Berhasil menambahkan data wali kelas!");
     }
 
-    public function edit(WaliKelas $waliKelas) {
-        return view("pages.wali-kelas.edit", ["waliKelas" => $waliKelas]);
-    }
-
-    public function update(Request $request, WaliKelas $waliKelas) {
+    public function update(Request $request, WaliKelas $waliKelas)
+    {
         $validated = $request->validate([
-            "nama_guru" => "required|string|max:255",
-            "tingkat" => "required|string|in:10,11,12",
-            "nama_kelas" => "required|string|max:255",
+            "guru_id" => "required|exists:gurus,id", // Validasi untuk guru
+            "kelas_id" => "required|exists:kelas,id", // Validasi untuk kelas
+            "tingkat" => "required|string|in:10,11,12",  // Validasi untuk tingkat kelas
         ]);
 
+        // Update data wali kelas dengan ID guru dan kelas
         $waliKelas->update($validated);
         return redirect()->route("wali-kelas.index")->with("success", "Data wali kelas berhasil diupdate");
     }
 
-    public function delete(WaliKelas $waliKelas) {
+
+    public function delete(WaliKelas $waliKelas)
+    {
         $waliKelas->delete();
         return redirect()->route('wali-kelas.index')->with('success', 'Data wali kelas berhasil dihapus');
     }

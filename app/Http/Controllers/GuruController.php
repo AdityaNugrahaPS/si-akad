@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
@@ -8,15 +7,18 @@ use Illuminate\Http\Request;
 class GuruController extends Controller
 {
     public function index() {
-        $guru = Guru::get();
+        // Mengambil semua data guru
+        $guru = Guru::all();
         return view("pages.guru.index", ["gurus"=> $guru]);
     }
 
     public function create(Request $request) {
+        // Menampilkan form untuk menambah guru
         return view("pages.guru.create");
     }
 
     public function store(Request $request) {
+        // Validasi input dan simpan data guru
         $validated = $request->validate([
             "nama_lengkap" => "required|string|",
             "jenis_kelamin" => "required|string|in:laki-laki,perempuan",
@@ -32,15 +34,18 @@ class GuruController extends Controller
             "telp" => "nullable|string"
         ]);
 
+        // Menyimpan data guru yang sudah divalidasi
         Guru::create($validated);
         return redirect()->route('guru.index')->with("success","Berhasil menambahkan data guru!");
     }
 
     public function edit(Guru $guru){
+        // Menampilkan form untuk edit data guru
         return view("pages.guru.edit", ["guru"=>$guru]);
     }
 
     public function update(Request $request, Guru $guru){
+        // Validasi input untuk update
         $validate = $request->validate([
             "nama_lengkap" => "required|string|",
             "jenis_kelamin" => "required|string|in:laki-laki,perempuan",
@@ -55,12 +60,14 @@ class GuruController extends Controller
             "email" => "nullable|string|email",
             "telp" => "nullable|string"
         ]);
-        $guru->update($validate);
 
+        // Update data guru
+        $guru->update($validate);
         return redirect()->route("guru.index")->with("success","Data berhasil di update");
     }
 
     public function delete(Guru $guru){
+        // Hapus data guru
         $guru->delete();
         return redirect()->route('guru.index')->with('success','Data berhasil dihapus');
     }

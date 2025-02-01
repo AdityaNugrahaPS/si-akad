@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guru extends Model
 {
-
+    // Kolom yang dapat diisi massal
     protected $fillable = [
         "nama_lengkap",
         "jenis_kelamin",
@@ -21,4 +21,10 @@ class Guru extends Model
         "email",
         "telp"
     ];
+
+    // Relasi dengan WaliKelas
+    public function waliKelas()
+    {
+        return $this->hasMany(WaliKelas::class);  // Guru bisa memiliki banyak WaliKelas
+    }
 }
