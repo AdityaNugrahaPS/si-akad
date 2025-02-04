@@ -46,4 +46,13 @@ class Siswa extends Model
     {
         return $this->foto ? asset('storage/' . $this->foto) : null;
     }
+
+    /**
+     * Relasi ke model Rombel.
+     * Setiap siswa bisa memiliki banyak data rombel.
+     */
+    public function rombels()
+    {
+        return $this->hasMany(Rombel::class); // Siswa bisa memiliki banyak rombel
+    }
 }

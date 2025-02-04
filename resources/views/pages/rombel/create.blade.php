@@ -65,9 +65,13 @@
           </div>
 
           <div class="col-md-6 mb-3">
-            <label for="nama_siswa" class="form-label"><i class="fa fa-user"></i> Nama Siswa<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('nama_siswa') is-invalid @enderror" id="nama_siswa" name="nama_siswa" value="{{ old('nama_siswa') }}">
-            @error('nama_siswa')
+            <label for="siswa_id" class="form-label"><i class="fa fa-user"></i> Nama Siswa<span class="text-danger">*</span></label>
+            <select name="siswa_id" class="form-select @error('siswa_id') is-invalid @enderror">
+              @foreach ($siswas as $siswa)
+                <option value="{{ $siswa->id }}" {{ old('siswa_id') == $siswa->id ? "selected" : "" }}>{{ $siswa->nama_lengkap }}</option>
+              @endforeach
+            </select>
+            @error('siswa_id')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
               </div>

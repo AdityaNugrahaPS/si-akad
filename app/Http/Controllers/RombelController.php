@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rombel;
 use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class RombelController extends Controller
@@ -12,7 +13,8 @@ class RombelController extends Controller
      * Menampilkan daftar seluruh data rombel.
      */
     public function index() {
-        $rombels = Rombel::with('kelas')->get();
+        // Lakukan eager load untuk relasi kelas dan siswa
+        $rombels = Rombel::with(['kelas', 'siswa'])->get();
         return view('pages.rombel.index', compact('rombels'));
     }
 
@@ -21,7 +23,9 @@ class RombelController extends Controller
      */
     public function create() {
         $kelas = Kelas::all();
-        return view('pages.rombel.create', compact('kelas'));
+        // Ambil seluruh data siswa untuk dipilih (menggunakan field nama_lengkap pada view)
+        $siswas = Siswa::all();
+        return view('pages.rombel.create', compact('kelas', 'siswas'));
     }
 
     /**
@@ -32,13 +36,15 @@ class RombelController extends Controller
             'tahun_pelajaran' => ['required', 'regex:/^\d{4}\/\d{4}$/'],
             'semester'        => 'required|in:ganjil,genap',
             'kelas_id'        => 'required|exists:kelas,id',
-            'nama_siswa'      => 'required|string|max:255',
+            // Ganti validasi sebelumnya yang menggunakan 'nama_siswa'
+            // dengan validasi untuk siswa_id yang mengacu ke data siswa
+            'siswa_id'        => 'required|exists:siswas,id',
         ]);
 
-        // Cek apakah kombinasi sudah ada
-        $exists = Rombel::where('tahun_pelajaran', $request->tahun_pelajaran)
-            ->where('semester', $request->semester)
-            ->where('kelas_id', $request->kelas_id)
+        // Cek apakah kombinasi tahun pelajaran, semester, dan kelas sudah ada
+        $exists = Rombel::where('tahun_pelajaran', $validated['tahun_pelajaran'])
+            ->where('semester', $validated['semester'])
+            ->where('kelas_id', $validated['kelas_id'])
             ->exists();
 
         if ($exists) {
@@ -47,6 +53,7 @@ class RombelController extends Controller
             ])->withInput();
         }
 
+        // Menyimpan data rombel dengan siswa_id sebagai referensi
         Rombel::create($validated);
         return redirect()->route('rombel.index')->with('success', 'Berhasil menambahkan data rombel!');
     }
@@ -56,7 +63,9 @@ class RombelController extends Controller
      */
     public function edit(Rombel $rombel) {
         $kelas = Kelas::all();
-        return view('pages.rombel.edit', compact('rombel', 'kelas'));
+        // Sertakan juga daftar siswa agar user dapat memilih data siswa (nama lengkap)
+        $siswas = Siswa::all();
+        return view('pages.rombel.edit', compact('rombel', 'kelas', 'siswas'));
     }
 
     /**
@@ -67,14 +76,14 @@ class RombelController extends Controller
             'tahun_pelajaran' => ['required', 'regex:/^\d{4}\/\d{4}$/'],
             'semester'        => 'required|in:ganjil,genap',
             'kelas_id'        => 'required|exists:kelas,id',
-            'nama_siswa'      => 'required|string|max:255',
+            'siswa_id'        => 'required|exists:siswas,id',
         ]);
 
-        // Pastikan kombinasi tidak duplikat sebelum update
-        $exists = Rombel::where('tahun_pelajaran', $request->tahun_pelajaran)
-            ->where('semester', $request->semester)
-            ->where('kelas_id', $request->kelas_id)
-            ->where('id', '!=', $rombel->id) // Hindari diri sendiri
+        // Pastikan kombinasi tidak duplikat (selain data yang sedang diupdate)
+        $exists = Rombel::where('tahun_pelajaran', $validated['tahun_pelajaran'])
+            ->where('semester', $validated['semester'])
+            ->where('kelas_id', $validated['kelas_id'])
+            ->where('id', '!=', $rombel->id)
             ->exists();
 
         if ($exists) {
@@ -83,6 +92,7 @@ class RombelController extends Controller
             ])->withInput();
         }
 
+        // Memperbarui data rombel dengan siswa_id sebagai referensi
         $rombel->update($validated);
         return redirect()->route('rombel.index')->with('success', 'Data rombel berhasil diupdate');
     }

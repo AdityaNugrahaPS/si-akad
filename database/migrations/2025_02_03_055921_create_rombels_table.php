@@ -16,13 +16,15 @@ return new class extends Migration
             $table->char('tahun_pelajaran', 9)->comment('Format: yyyy/yyyy'); // Format tahun pelajaran
             $table->enum('semester', ['ganjil', 'genap']); // Semester: Ganjil atau Genap
             $table->foreignId('kelas_id')
-                  ->constrained('kelas') // Relasi dengan tabel kelas
-                  ->onDelete('cascade'); // Hapus data rombel jika kelas dihapus
-            $table->string('nama_siswa', 255); // Tidak nullable, karena wajib diisi sesuai validasi di controller
+                ->constrained('kelas') // Relasi dengan tabel kelas
+                ->onDelete('cascade'); // Hapus data rombel jika kelas dihapus
+            $table->foreignId('siswa_id') // Menambahkan relasi dengan tabel siswa
+                ->constrained('siswas') // Relasi dengan tabel siswas
+                ->onDelete('cascade'); // Hapus data rombel jika siswa dihapus
             $table->timestamps();
 
             // Menambahkan indeks unik agar tidak ada duplikasi dalam satu tahun pelajaran + semester + kelas
-            $table->unique(['tahun_pelajaran', 'semester', 'kelas_id']);
+            $table->unique(['tahun_pelajaran', 'semester', 'kelas_id', 'siswa_id']);
         });
     }
 

@@ -1,4 +1,4 @@
-@extends('layout.default', [])
+@extends('layout.default')
 
 @section('title', 'Rombel')
 
@@ -63,7 +63,7 @@
                             <td>{{ $rombel->tahun_pelajaran }}</td>
                             <td>{{ ucfirst($rombel->semester) }}</td>
                             <td>{{ $rombel->kelas->nama_kelas }}</td>
-                            <td>{{ $rombel->nama_siswa }}</td>
+                            <td>{{ optional($rombel->siswa)->nama_lengkap ?? 'Tidak Ada Siswa' }}</td> <!-- Menghindari error jika siswa null -->
                             <td>
                                 <a class="btn btn-primary" href="{{ route('rombel.edit', $rombel->id) }}">
                                     <i class="fa fa-edit"></i> Edit
