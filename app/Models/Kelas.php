@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Rombel; // Pastikan untuk meng-import model Rombel
 
 class Kelas extends Model
 {
@@ -20,6 +21,18 @@ class Kelas extends Model
     public function waliKelas()
     {
         return $this->hasMany(WaliKelas::class);  // Kelas bisa memiliki banyak WaliKelas
+    }
+
+    // Relasi dengan Pengajar
+    public function pengajars()
+    {
+        return $this->hasMany(Pengajar::class, 'kelas_id'); // Kelas bisa memiliki banyak Pengajar via kelas_id
+    }
+
+    // Relasi dengan Rombel
+    public function rombels()
+    {
+        return $this->hasMany(Rombel::class); // Kelas bisa memiliki banyak Rombel
     }
 
     // Aturan validasi model

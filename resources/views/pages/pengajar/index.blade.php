@@ -6,7 +6,6 @@
     <link href="/assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
-    <link href="/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
 @endpush
 
 @push('js')
@@ -20,7 +19,6 @@
     <script src="/assets/plugins/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
     <script src="/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="/assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-    <script src="/assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({
@@ -50,7 +48,7 @@
                     </div>
                 @endif
 
-                <table id="dataTable" class="table text-nowrap w-100">
+                <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>
                             <th scope="col">Nama Guru</th>
@@ -58,23 +56,22 @@
                             <th scope="col">Kelas</th>
                             <th scope="col">Tahun Pelajaran</th>
                             <th scope="col">Semester</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pengajars as $pengajar)
                             <tr>
-                                <td>{{ $pengajar->nama_guru }}</td>
-                                <td>{{ $pengajar->nama_mapel }}</td>
-                                <td>{{ $pengajar->nama_kelas }}</td>
+                                <td>{{ $pengajar->guru->nama_lengkap }}</td>
+                                <td>{{ optional($pengajar->mataPelajaran)->nama_mata_pelajaran }}</td> 
+                                <td>{{ $pengajar->kelas->nama_kelas }}</td>
                                 <td>{{ $pengajar->tahun_pelajaran }}</td>
                                 <td>{{ $pengajar->semester }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('pengajar.edit', $pengajar->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form class="d-inline" action="{{ route('pengajar.delete', $pengajar->id) }}"
-                                        method="post">
+                                    <form class="d-inline" action="{{ route('pengajar.delete', $pengajar->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" type="submit">

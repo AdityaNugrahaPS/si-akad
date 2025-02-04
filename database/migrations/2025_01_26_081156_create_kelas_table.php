@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('tingkat'); // Kolom untuk tingkat kelas (10, 11, 12)
-            $table->string('nama_kelas'); // Kolom untuk nama kelas
-            $table->string('kode_kelas')->unique(); // Kolom untuk kode kelas yang unik
-            $table->timestamps(); // Kolom untuk created_at dan updated_at
+            $table->enum('tingkat', ['10', '11', '12'])->comment('Tingkat kelas: 10, 11, atau 12');
+            $table->string('nama_kelas')->unique()->comment('Nama kelas harus unik'); // Nama kelas unik
+            $table->char('kode_kelas', 10)->unique()->comment('Kode unik untuk kelas, max 10 karakter');
+            $table->timestamps();
         });
     }
 

@@ -15,12 +15,14 @@
     <li class="breadcrumb-item"><a href="{{ route('siswa.index') }}">Siswa</a></li>
     <li class="breadcrumb-item active">Tambah Siswa</li>
   </ul>
+
 	<div class="card">
     <div class="card-header">
       <h3>Tambah Siswa</h3>
       <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
         @csrf
         @method('PATCH')
+        
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="nama_lengkap" class="form-label">Nama Lengkap<span class="text-danger">*</span></label>
@@ -63,7 +65,6 @@
               <div class="invalid-feedback text-danger">{{ $message }}</div>
             @enderror
           </div>
-          
 
           <div class="col-md-6 mb-3">
             <label for="aktif" class="form-label">Aktif</label>
@@ -221,27 +222,18 @@
           </div>
 
           <div class="col-md-6 mb-3">
-            <label for="telp_ayah" class="form-label">Telp Ayah</label>
-            <input type="text" class="form-control @error('telp_ayah') is-invalid @enderror" id="telp_ayah" name="telp_ayah" value="{{ old('telp_ayah') ?? $siswa->telp_ayah }}">
-            @error('telp_ayah')
-              <div class="invalid-feedback text-danger">{{ $message }}</div>
-            @enderror
-          </div>
-
-          <div class="col-md-6 mb-3">
-            <label for="telp_ibu" class="form-label">Telp Ibu</label>
-            <input type="text" class="form-control @error('telp_ibu') is-invalid @enderror" id="telp_ibu" name="telp_ibu" value="{{ old('telp_ibu') ?? $siswa->telp_ibu }}">
-            @error('telp_ibu')
+            <label for="telp_orang_tua" class="form-label">Telp Orang Tua</label>
+            <input type="text" class="form-control @error('telp_orang_tua') is-invalid @enderror" id="telp_orang_tua" name="telp_orang_tua" value="{{ old('telp_orang_tua') ?? $siswa->telp_orang_tua }}">
+            @error('telp_orang_tua')
               <div class="invalid-feedback text-danger">{{ $message }}</div>
             @enderror
           </div>
         </div>
 
-        <div class="mb-2">
-          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Submit</button>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Simpan</button>
         </div>
       </form>
     </div>
-	</div>
-</div>
+  </div>
 @endsection

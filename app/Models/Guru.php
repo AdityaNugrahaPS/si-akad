@@ -27,4 +27,10 @@ class Guru extends Model
     {
         return $this->hasMany(WaliKelas::class);  // Guru bisa memiliki banyak WaliKelas
     }
+
+    // Relasi dengan Pengajar
+    public function pengajars()
+    {
+        return $this->hasMany(Pengajar::class, 'guru_id'); // Seorang Guru dapat mengajar banyak Pengajar
+    }
 }

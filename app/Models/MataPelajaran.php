@@ -14,4 +14,10 @@ class MataPelajaran extends Model
         'kode_mata_pelajaran',
         'kelompok',
     ];
+
+    // Relasi ke model Pengajar
+    public function pengajar()
+    {
+        return $this->hasMany(Pengajar::class, 'mata_pelajaran_id');
+    }
 }

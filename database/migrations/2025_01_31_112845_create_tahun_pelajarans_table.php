@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tahun_pelajarans', function (Blueprint $table) {
             $table->id();
             $table->string('status'); // Status "Aktif" atau "Tidak Aktif"
-            $table->string('tahun', 4); // Tahun akademik, misal: 2024
+            $table->string('tahun', 9); // Tahun akademik, misal: 2024
             $table->enum('semester', ['Ganjil', 'Genap']); // Semester "Ganjil" atau "Genap"
             $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade'); // Relasi ke tabel guru
             $table->date('tanggal_rapor'); // Tanggal rapor

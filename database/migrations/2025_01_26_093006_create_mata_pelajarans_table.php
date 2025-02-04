@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mata_pelajarans', function (Blueprint $table) {
             $table->id(); // Kolom ID
             $table->string('nama_mata_pelajaran'); // Nama Mata Pelajaran
-            $table->string('kode_mata_pelajaran'); // Kode Mata Pelajaran
+            $table->string('kode_mata_pelajaran')->unique(); // Kode Mata Pelajaran (dijadikan unik, jika diperlukan)
             $table->enum('kelompok', ['A', 'B', 'C']); // Kelompok (A, B, C)
             $table->timestamps(); // Kolom timestamps untuk created_at dan updated_at
         });
