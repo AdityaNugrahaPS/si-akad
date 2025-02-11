@@ -76,7 +76,7 @@ return [
         ]
       ],
       [
-        'url' => '/datapengguna',
+        'url' => '/data-pengguna',
         'icon' => 'fa fa-users',
         'text' => 'Data Pengguna'
       ]

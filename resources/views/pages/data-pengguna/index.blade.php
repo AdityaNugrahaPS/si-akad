@@ -23,8 +23,6 @@
   <script src="/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
   <script src="/assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
   <script src="/assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
-  <!-- Sertakan SweetAlert2 dari CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     var handleRenderTableData = function() {
       var table = $('#dataTable').DataTable({
@@ -35,27 +33,6 @@
     $(document).ready(function() {
       handleRenderTableData();
     });
-
-    // Fungsi untuk menampilkan SweetAlert2 dengan konten upload
-    function showUploadAlert() {
-      // Ambil konten HTML dari komponen UploadAlert yang tersembunyi
-      var htmlContent = document.getElementById('uploadAlertContent').innerHTML;
-      
-      Swal.fire({
-        title: 'Upload Data Guru',
-        html: htmlContent,
-        showCancelButton: true,
-        focusConfirm: false,
-        confirmButtonText: 'Simpan',
-        cancelButtonText: 'Batal',
-        // Jika perlu, tambahkan preConfirm untuk validasi form
-        preConfirm: () => {
-          // Contoh: ambil file dari input (jika ingin proses upload via AJAX)
-          // var file = document.getElementById('fileInput').files[0];
-          // Lakukan validasi atau proses lainnya di sini...
-        }
-      });
-    }
   </script>
 @endpush
 
@@ -70,11 +47,6 @@
   <a href="{{ route('guru.create') }}" class="btn btn-success">
     <i class="fa fa-plus"></i> Add
   </a>
-  
-  <!-- Tombol untuk membuka alert upload guru -->
-  <button type="button" class="btn btn-info" onclick="showUploadAlert()">
-    <i class="fa fa-upload"></i> Upload Guru
-  </button>
 </div>
 
 <div class="card">
@@ -140,9 +112,6 @@
   </div>
 </div>
 
-<!-- Sisipkan komponen UploadAlert secara tersembunyi (tidak tampil di page) -->
-<div style="display: none;">
-  <x-upload-alert title="Upload Data Guru" template-link="/template-guru.xlsx" />
-</div>
+<!-- Sertakan komponen alert upload global -->
+<x-upload-modal title="Upload Data Guru" template-link="/template-guru.xlsx" />
 @endsection
-  

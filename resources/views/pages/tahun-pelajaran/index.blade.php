@@ -73,7 +73,7 @@
                             <th>Status</th>
                             <th>Tahun</th>
                             <th>Semester</th>
-                            <th>Nama Guru</th>
+                            <th>Kepala Sekolah</th>
                             <th>Tanggal Rapor</th>
                             <th>Action</th>
                         </tr>
