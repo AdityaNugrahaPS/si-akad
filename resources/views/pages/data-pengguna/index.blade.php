@@ -1,6 +1,6 @@
 @extends('layout.default', [])
 
-@section('title', 'Guru')
+@section('title', 'Data Pengguna')
 
 @push('css')
   <!-- Extra CSS -->
@@ -37,81 +37,64 @@
 @endpush
 
 @section('content')
-<ul class="breadcrumb">
-  <li class="breadcrumb-item">Guru</li>
-  <li class="breadcrumb-item active"></li>
-</ul>
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('data-pengguna.index') }}">Data Pengguna</a></li>
+    <li class="breadcrumb-item active">List</li>
+  </ul>
 
-<div class="mb-3">
-  <!-- Tombol tambah data guru -->
-  <a href="{{ route('guru.create') }}" class="btn btn-success">
-    <i class="fa fa-plus"></i> Add
-  </a>
-</div>
+  <div class="mb-3">
+    <!-- Tombol tambah data pengguna -->
+    <a href="{{ route('data-pengguna.create') }}" class="btn btn-success">
+      <i class="fa fa-plus"></i> Tambah Data Pengguna
+    </a>
+  </div>
 
-<div class="card">
-  <div class="row justify-content-center">
-    <div class="col-xl-11 my-5">
-      @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-          <strong><i class="fa fa-check-circle"></i></strong> {{ session('success') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      @endif
+  <div class="card">
+    <div class="row justify-content-center">
+      <div class="col-xl-11 my-5">
+        @if (session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+            <strong><i class="fa fa-check-circle"></i></strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
 
-      <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">NIP</th>
-            <th scope="col">NIK</th>
-            <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Tempat Lahir</th>
-            <th scope="col">Tanggal Lahir</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Gelar Depan</th>
-            <th scope="col">Gelar Belakang</th>
-            <th scope="col">Pendidikan Terakhir</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telp</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($gurus as $guru)
+        <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
+          <thead>
             <tr>
-              <td>{{ $guru->nama_lengkap }}</td>
-              <td>{{ $guru->nip }}</td>
-              <td>{{ $guru->nik }}</td>
-              <td>{{ $guru->jenis_kelamin }}</td>
-              <td>{{ $guru->tempat_lahir }}</td>
-              <td>{{ $guru->tanggal_lahir }}</td>
-              <td>{{ $guru->alamat }}</td>
-              <td>{{ $guru->gelar_depan }}</td>
-              <td>{{ $guru->gelar_belakang }}</td>
-              <td>{{ $guru->pendidikan_terakhir }}</td>
-              <td>{{ $guru->email }}</td>
-              <td>{{ $guru->telp }}</td>
-              <td>
-                <a class="btn btn-primary" href="{{ route('guru.edit', $guru->id) }}">
-                  <i class="fa fa-edit"></i> Edit
-                </a>
-                <form class="d-inline" action="{{ route('guru.delete', $guru->id) }}" method="post">
-                  @csrf
-                  @method('delete')
-                  <button class="btn btn-danger" type="submit">
-                    <i class="fa fa-trash"></i> Delete
-                  </button>
-                </form>
-              </td>
+              <th scope="col">Nama Depan</th>
+              <th scope="col">Nama Belakang</th>
+              <th scope="col">Lembaga</th>
+              <th scope="col">Email</th>
+              <th scope="col">Nomor Telfon</th>
+              <th scope="col">Action</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @foreach ($penggunas as $pengguna)
+              <tr>
+                <td>{{ $pengguna->nama_depan }}</td>
+                <td>{{ $pengguna->nama_belakang }}</td>
+                <td>{{ $pengguna->lembaga }}</td>
+                <td>{{ $pengguna->email }}</td>
+                <td>{{ $pengguna->nomor_telfon }}</td>
+                <td>
+                  <a class="btn btn-primary" href="{{ route('data-pengguna.edit', $pengguna->id) }}">
+                    <i class="fa fa-edit"></i> Edit
+                  </a>
+                  <form class="d-inline" action="{{ route('data-pengguna.delete', $pengguna->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');">
+                      <i class="fa fa-trash"></i> Delete
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Sertakan komponen alert upload global -->
-<x-upload-modal title="Upload Data Guru" template-link="/template-guru.xlsx" />
 @endsection

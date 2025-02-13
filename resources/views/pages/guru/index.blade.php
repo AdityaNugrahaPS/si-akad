@@ -142,7 +142,8 @@
 
 <!-- Sisipkan komponen UploadAlert secara tersembunyi (tidak tampil di page) -->
 <div style="display: none;">
-  <x-upload-alert title="Upload Data Guru" template-link="/template-guru.xlsx" />
+  <x-upload-alert title="Upload Data Guru" template-link="{{ asset('template/template-guru.xlsx') }}" />
 </div>
+
 @endsection
   
