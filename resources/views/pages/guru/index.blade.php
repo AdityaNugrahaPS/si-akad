@@ -90,7 +90,7 @@
       <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
         <thead>
           <tr>
-            <th scope="col">Name</th>
+            <th scope="col">Nama Lengkap</th>
             <th scope="col">NIP</th>
             <th scope="col">NIK</th>
             <th scope="col">Jenis Kelamin</th>
@@ -142,7 +142,7 @@
 
 <!-- Sisipkan komponen UploadAlert secara tersembunyi (tidak tampil di page) -->
 <div style="display: none;">
-  <x-upload-alert title="Upload Data Guru" template-link="{{ asset('template/template-guru.xlsx') }}" />
+  <x-upload-alert-guru title="Upload Data Guru" template-link="{{ asset('template/template-guru.xlsx') }}" />
 </div>
 
 @endsection

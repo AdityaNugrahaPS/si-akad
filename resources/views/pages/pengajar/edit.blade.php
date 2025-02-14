@@ -33,9 +33,8 @@
                             <i class="fa fa-calendar"></i> Tahun Pelajaran<span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control @error('tahun_pelajaran') is-invalid @enderror"
-                               id="tahun_pelajaran" name="tahun_pelajaran"
-                               value="{{ old('tahun_pelajaran') ?? $pengajar->tahun_pelajaran }}"
-                               placeholder="yyyy/yyyy">
+                            id="tahun_pelajaran" name="tahun_pelajaran"
+                            value="{{ old('tahun_pelajaran') ?? $pengajar->tahun_pelajaran }}" placeholder="yyyy/yyyy">
                         @error('tahun_pelajaran')
                             <div class="invalid-feedback text-danger">
                                 {{ $message }}
@@ -48,8 +47,11 @@
                             <i class="fa fa-layer-group"></i> Semester<span class="text-danger">*</span>
                         </label>
                         <select name="semester" class="form-select @error('semester') is-invalid @enderror">
-                            <option value="ganjil" {{ (old('semester') ?? $pengajar->semester) === 'ganjil' ? 'selected' : '' }}>Ganjil</option>
-                            <option value="genap" {{ (old('semester') ?? $pengajar->semester) === 'genap' ? 'selected' : '' }}>Genap</option>
+                            <option value="ganjil"
+                                {{ (old('semester') ?? $pengajar->semester) === 'ganjil' ? 'selected' : '' }}>Ganjil
+                            </option>
+                            <option value="genap"
+                                {{ (old('semester') ?? $pengajar->semester) === 'genap' ? 'selected' : '' }}>Genap</option>
                         </select>
                         @error('semester')
                             <div class="invalid-feedback text-danger">
@@ -63,8 +65,7 @@
                         <label for="guru_id" class="form-label">
                             <i class="fa fa-chalkboard-teacher"></i> Nama Guru<span class="text-danger">*</span>
                         </label>
-                        <select name="guru_id" id="guru_id"
-                                class="form-select @error('guru_id') is-invalid @enderror">
+                        <select name="guru_id" id="guru_id" class="form-select @error('guru_id') is-invalid @enderror">
                             <option value="" disabled selected>Pilih Guru</option>
                             @foreach ($gurus as $guru)
                                 <option value="{{ $guru->id }}"
@@ -86,7 +87,7 @@
                             <i class="fa fa-book"></i> Nama Mata Pelajaran<span class="text-danger">*</span>
                         </label>
                         <select name="mata_pelajaran_id" id="mata_pelajaran_id"
-                                class="form-select @error('mata_pelajaran_id') is-invalid @enderror">
+                            class="form-select @error('mata_pelajaran_id') is-invalid @enderror">
                             <option value="" disabled selected>Pilih Mata Pelajaran</option>
                             @foreach ($mataPelajarans as $mapel)
                                 <option value="{{ $mapel->id }}"
@@ -107,8 +108,7 @@
                         <label for="kelas_id" class="form-label">
                             <i class="fa fa-building"></i> Kelas<span class="text-danger">*</span>
                         </label>
-                        <select name="kelas_id" id="kelas_id"
-                                class="form-select @error('kelas_id') is-invalid @enderror">
+                        <select name="kelas_id" id="kelas_id" class="form-select @error('kelas_id') is-invalid @enderror">
                             <option value="" disabled selected>Pilih Kelas</option>
                             @foreach ($kelas as $item)
                                 <option value="{{ $item->id }}"

@@ -29,6 +29,6 @@ class UploadAlert extends Component
      */
     public function render()
     {
-        return view('components.upload-alert');
+        return view('components.upload-alert-guru');
     }
 }
