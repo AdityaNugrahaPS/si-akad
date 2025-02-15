@@ -23,6 +23,7 @@
     <script src="/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="/assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
     <script src="/assets/plugins/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         var handleRenderTableData = function() {
             var table = $('#dataTable').DataTable({
@@ -40,6 +41,23 @@
                 $('#photoModal').modal('show');
             });
         });
+
+        function showUploadAlertSiswa() {
+            // Ambil konten HTML dari komponen UploadAlert siswa yang tersembunyi
+            var htmlContent = document.getElementById('uploadAlertContent').innerHTML;
+
+            Swal.fire({
+                title: 'Upload Data Siswa',
+                html: htmlContent,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText: 'Simpan',
+                cancelButtonText: 'Batal',
+                preConfirm: () => {
+                    // Proses validasi atau upload jika diperlukan
+                }
+            });
+        }
     </script>
 @endpush
 
@@ -49,9 +67,15 @@
         <li class="breadcrumb-item active"></li>
     </ul>
 
-    <a href="{{ route('siswa.create') }}" type="button" class="btn btn-success mb-3">
-        <i class="fa fa-plus"></i> Add
-    </a>
+    <div class="mb-3 d-flex align-items-center gap-2">
+        <a href="{{ route('siswa.create') }}" type="button" class="btn btn-success" style="margin-right: 2px;">
+            <i class="fa fa-plus"></i> Tambah Siswa
+        </a>
+        <button type="button" class="btn btn-info" onclick="showUploadAlertSiswa()">
+            <i class="fa fa-upload"></i> Upload Siswa
+        </button>
+    </div>
+
 
     <div class="card">
         <div class="row justify-content-center">
@@ -131,7 +155,9 @@
                                 <td>
                                     @if ($siswa->foto)
                                         <!-- Tambahkan kelas "zoomable" dan atribut data-photo -->
-                                        <img src="{{ asset('storage/' . $siswa->foto) }}" width="50" height="50" alt="Foto Siswa" class="zoomable" data-photo="{{ asset('storage/' . $siswa->foto) }}" style="cursor: pointer;">
+                                        <img src="{{ asset('storage/' . $siswa->foto) }}" width="50" height="50"
+                                            alt="Foto Siswa" class="zoomable"
+                                            data-photo="{{ asset('storage/' . $siswa->foto) }}" style="cursor: pointer;">
                                     @else
                                         <span class="badge bg-secondary">No Photo</span>
                                     @endif
@@ -171,4 +197,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Sisipkan komponen UploadAlert secara tersembunyi (tidak tampil di page) -->
+    <div style="display: none;">
+        <x-upload-alert-siswa title="Upload Data Siswa" template-link="{{ asset('template/template-siswa.xlsx') }}" />
+    </div>
+
 @endsection

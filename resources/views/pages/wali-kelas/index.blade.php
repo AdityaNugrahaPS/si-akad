@@ -43,7 +43,7 @@
 </ul>
 
 <a href="{{ route('wali-kelas.create') }}" type="button" class="btn btn-success mb-3">
-    <i class="fa fa-plus"></i> Add
+    <i class="fa fa-plus"></i> Tambah Wali Kelas
 </a>
 
 <div class="card">

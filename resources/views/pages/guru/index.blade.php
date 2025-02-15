@@ -65,17 +65,17 @@
   <li class="breadcrumb-item active"></li>
 </ul>
 
-<div class="mb-3">
+<div class="mb-3 d-flex align-items-center gap-2">
   <!-- Tombol tambah data guru -->
   <a href="{{ route('guru.create') }}" class="btn btn-success">
-    <i class="fa fa-plus"></i> Add
+    <i class="fa fa-plus"></i> Tambah Guru
   </a>
-  
   <!-- Tombol untuk membuka alert upload guru -->
   <button type="button" class="btn btn-info" onclick="showUploadAlert()">
     <i class="fa fa-upload"></i> Upload Guru
   </button>
 </div>
+
 
 <div class="card">
   <div class="row justify-content-center">

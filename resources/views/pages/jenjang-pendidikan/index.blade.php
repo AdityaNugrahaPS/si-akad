@@ -44,7 +44,7 @@
 </ul>
 
 <a href="{{ route('jenjang-pendidikan.create') }}" type="button" class="btn btn-success mb-3">
-  <i class="fa fa-plus"></i> Add
+  <i class="fa fa-plus"></i> Tambah Jenjang Pendidikan
 </a>
 
 <div class="card">

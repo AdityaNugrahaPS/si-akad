@@ -54,7 +54,7 @@
     </ul>
 
     <a href="{{ route('tahun-pelajaran.create') }}" class="btn btn-success mb-3">
-        <i class="fa fa-plus"></i> Add
+        <i class="fa fa-plus"></i> Tambah Tahun Pelajaran
     </a>
 
     <div class="card">

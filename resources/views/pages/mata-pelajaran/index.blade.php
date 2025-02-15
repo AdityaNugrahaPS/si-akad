@@ -37,7 +37,7 @@
     </ul>
 
     <a href="{{ route('mata-pelajaran.create') }}" class="btn btn-success mb-3">
-        <i class="fa fa-plus"></i> Add
+        <i class="fa fa-plus"></i> Tambah Mata Pelajarann
     </a>
 
     <div class="card">

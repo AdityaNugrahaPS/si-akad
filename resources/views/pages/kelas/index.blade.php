@@ -43,7 +43,7 @@ $(document).ready(function() {
 </ul>
 
 <a href="{{ route('kelas.create') }}" type="button" class="btn btn-success mb-3">
-  <i class="fa fa-plus"></i> Add
+  <i class="fa fa-plus"></i> Tambah Kelas
 </a>
 
 <div class="card">
