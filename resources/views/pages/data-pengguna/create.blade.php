@@ -29,8 +29,11 @@
           </div>
           
           <div class="col-md-6 mb-3">
-            <label for="nama_depan" class="form-label"><i class="fa fa-user"></i> Nama Depan<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('nama_depan') is-invalid @enderror" id="nama_depan" name="nama_depan" value="{{ old('nama_depan') }}">
+            <label for="nama_depan" class="form-label">
+              <i class="fa fa-user"></i> Nama Depan<span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control @error('nama_depan') is-invalid @enderror" 
+                   id="nama_depan" name="nama_depan" value="{{ old('nama_depan') }}">
             @error('nama_depan')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -39,8 +42,11 @@
           </div>
           
           <div class="col-md-6 mb-3">
-            <label for="nama_belakang" class="form-label"><i class="fa fa-user"></i> Nama Belakang<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('nama_belakang') is-invalid @enderror" id="nama_belakang" name="nama_belakang" value="{{ old('nama_belakang') }}">
+            <label for="nama_belakang" class="form-label">
+              <i class="fa fa-user"></i> Nama Belakang<span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control @error('nama_belakang') is-invalid @enderror" 
+                   id="nama_belakang" name="nama_belakang" value="{{ old('nama_belakang') }}">
             @error('nama_belakang')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -50,9 +56,32 @@
           
           <!-- Informasi Lembaga -->
           <div class="col-md-6 mb-3">
-            <label for="lembaga" class="form-label"><i class="fa fa-building"></i> Lembaga<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('lembaga') is-invalid @enderror" id="lembaga" name="lembaga" value="{{ old('lembaga') }}">
+            <label for="lembaga" class="form-label">
+              <i class="fa fa-building"></i> Lembaga<span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control @error('lembaga') is-invalid @enderror" 
+                   id="lembaga" name="lembaga" value="{{ old('lembaga') }}">
             @error('lembaga')
+              <div class="invalid-feedback text-danger">
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <!-- Pilihan Grup -->
+          <div class="col-md-6 mb-3">
+            <label for="grup_id" class="form-label">
+              <i class="fa fa-users"></i> Grup<span class="text-danger">*</span>
+            </label>
+            <select class="form-control @error('grup_id') is-invalid @enderror" id="grup_id" name="grup_id">
+              <option value="">Pilih Grup</option>
+              @foreach($grups as $grup)
+                <option value="{{ $grup->id }}" {{ old('grup_id') == $grup->id ? 'selected' : '' }}>
+                  {{ $grup->nama_grup }}
+                </option>
+              @endforeach
+            </select>
+            @error('grup_id')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
               </div>
@@ -61,8 +90,11 @@
 
           <!-- Informasi Kontak -->
           <div class="col-md-6 mb-3">
-            <label for="email" class="form-label"><i class="fa fa-envelope"></i> Email<span class="text-danger">*</span></label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+            <label for="email" class="form-label">
+              <i class="fa fa-envelope"></i> Email<span class="text-danger">*</span>
+            </label>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" 
+                   id="email" name="email" value="{{ old('email') }}">
             @error('email')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -71,8 +103,11 @@
           </div>
 
           <div class="col-md-6 mb-3">
-            <label for="nomor_telfon" class="form-label"><i class="fa fa-phone"></i> Nomor Telfon<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('nomor_telfon') is-invalid @enderror" id="nomor_telfon" name="nomor_telfon" value="{{ old('nomor_telfon') }}">
+            <label for="nomor_telfon" class="form-label">
+              <i class="fa fa-phone"></i> Nomor Telfon<span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control @error('nomor_telfon') is-invalid @enderror" 
+                   id="nomor_telfon" name="nomor_telfon" value="{{ old('nomor_telfon') }}">
             @error('nomor_telfon')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -82,8 +117,11 @@
           
           <!-- Informasi Keamanan -->
           <div class="col-md-6 mb-3">
-            <label for="password" class="form-label"><i class="fa fa-lock"></i> Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+            <label for="password" class="form-label">
+              <i class="fa fa-unlock-alt"></i> Password<span class="text-danger">*</span>
+            </label>
+            <input type="password" class="form-control @error('password') is-invalid @enderror" 
+                   id="password" name="password">
             @error('password')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -92,8 +130,11 @@
           </div>
           
           <div class="col-md-6 mb-3">
-            <label for="konfirmasi_password" class="form-label"><i class="fa fa-lock"></i> Konfirmasi Password<span class="text-danger">*</span></label>
-            <input type="password" class="form-control @error('konfirmasi_password') is-invalid @enderror" id="konfirmasi_password" name="konfirmasi_password">
+            <label for="konfirmasi_password" class="form-label">
+              <i class="fa fa-unlock-alt"></i> Konfirmasi Password<span class="text-danger">*</span>
+            </label>
+            <input type="password" class="form-control @error('konfirmasi_password') is-invalid @enderror" 
+                   id="konfirmasi_password" name="konfirmasi_password">
             @error('konfirmasi_password')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
@@ -102,7 +143,9 @@
           </div>
         </div>
         <div class="mb-2">
-          <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Submit
+          </button>
         </div>
       </form>
     </div>

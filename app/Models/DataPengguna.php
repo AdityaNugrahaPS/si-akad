@@ -9,7 +9,7 @@ class DataPengguna extends Model
 {
     use HasFactory;
 
-    // Tentukan nama tabel yang digunakan oleh model ini (jika tidak menggunakan konvensi default)
+    // Tentukan nama tabel yang digunakan oleh model ini
     protected $table = 'data_penggunas';
 
     // Tentukan kolom yang dapat diisi secara massal
@@ -20,22 +20,18 @@ class DataPengguna extends Model
         'email',
         'nomor_telfon',
         'password',
+        'grup_id',  // Ubah nama kolom menjadi grup_id
     ];
-
-    // Tentukan kolom yang tidak dapat diisi secara massal
-    protected $guarded = [
-        // Kolom yang tidak boleh diisi secara massal (jika ada)
-    ];
-
-    // Mengatur tipe data untuk kolom tertentu jika diperlukan (misal: casting untuk tipe tanggal)
+    
+    // Mengatur tipe data untuk kolom tertentu jika diperlukan
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
-    // Jika ada relasi dengan model lain, misalnya dengan model Role, maka bisa ditambahkan di sini
-    // public function role()
-    // {
-    //     return $this->belongsTo(Role::class);
-    // }
+    public function grup()
+    {
+        return $this->belongsTo(Grup::class); // Relasi BelongsTo ke Grup
+    }
+    
 }

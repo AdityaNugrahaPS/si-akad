@@ -43,22 +43,15 @@
     </ul>
 
     <div class="mb-3">
-        <!-- Tombol tambah data pengguna -->
+        <!-- Button to add new user -->
         <a href="{{ route('data-pengguna.create') }}" class="btn btn-success">
             <i class="fa fa-plus"></i> Tambah Pengguna
         </a>
-        <!-- Tombol kelola grup -->
-
-
-        {{-- 
-        <a href="{{ route('data-grup.index') }}" class="btn btn-info">
+        <!-- Button to manage groups -->
+        <a href="{{ route('data-pengguna.kelola-grup.index') }}" class="btn btn-info">
             <i class="fa fa-users"></i> Kelola Grup
-        </a> 
-        --}}
-
-
+        </a>
     </div>
-
 
     <div class="card">
         <div class="row justify-content-center">
@@ -77,6 +70,7 @@
                             <th scope="col">Nama Belakang</th>
                             <th scope="col">Lembaga</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Grup</th> {{-- Column for Group --}}
                             <th scope="col">Aktivasi</th>
                             <th scope="col">Nomor Telfon</th>
                             <th scope="col">Action</th>
@@ -89,19 +83,22 @@
                                 <td>{{ $pengguna->nama_belakang }}</td>
                                 <td>{{ $pengguna->lembaga }}</td>
                                 <td>{{ $pengguna->email }}</td>
+                                <td>
+                                    {{-- Display the group name or "-" if no group exists --}}
+                                    {{ $pengguna->grup ? $pengguna->grup->nama_grup : '-' }}
+                                </td>
                                 <td>{{ $pengguna->aktivasi }}</td>
                                 <td>{{ $pengguna->nomor_telfon }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('data-pengguna.edit', $pengguna->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form class="d-inline" action="{{ route('data-pengguna.delete', $pengguna->id) }}"
-                                        method="POST">
+                                    <form class="d-inline" action="{{ route('data-pengguna.delete', $pengguna->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger" type="submit"
-                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');">
-                                            <i class="fa fa-trash"></i> Delete
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            <i class="fa fa-trash"></i> Hapus
                                         </button>
                                     </form>
                                 </td>

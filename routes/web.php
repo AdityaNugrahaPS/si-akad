@@ -12,6 +12,7 @@ use App\Http\Controllers\TahunPelajaranController;
 use App\Http\Controllers\JenjangPendidikanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DataPenggunaController;
+use App\Http\Controllers\GrupController;
 use App\Models\Profile;
 use App\Models\Siswa;
 use App\Models\Guru;
@@ -170,4 +171,12 @@ Route::prefix('data-pengguna')->middleware('auth')->group(function () {
     Route::get('/edit/{dataPengguna}', [DataPenggunaController::class, 'edit'])->name('data-pengguna.edit');
     Route::patch('/edit/{dataPengguna}', [DataPenggunaController::class, 'update'])->name('data-pengguna.update');
     Route::delete('/{dataPengguna}', [DataPenggunaController::class, 'delete'])->name('data-pengguna.delete');
+});
+
+// Grup routes
+Route::prefix('data-pengguna/kelola-grup')->name('data-pengguna.kelola-grup.')->group(function () {
+    Route::get('/', [GrupController::class, 'index'])->name('index');
+    Route::get('/create', [GrupController::class, 'create'])->name('create');
+    Route::post('/store', [GrupController::class, 'store'])->name('store');
+    Route::delete('/{id}', [GrupController::class, 'destroy'])->name('destroy');  // Route untuk delete
 });
