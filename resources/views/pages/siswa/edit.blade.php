@@ -108,6 +108,15 @@
                         @enderror
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label for="telp_siswa" class="form-label"><i class="fa fa-phone"></i> Nomor Telepon Siswa</label>
+                        <input type="text" class="form-control @error('telp_siswa') is-invalid @enderror" id="telp_siswa"
+                            name="telp_siswa" value="{{ old('telp_siswa', $siswa->telp_siswa) }}">
+                        @error('telp_siswa')
+                            <div class="invalid-feedback text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <!-- Identitas Resmi -->
                     <div class="col-12 mt-3">
                         <h5 class="mb-3"><i class="fa fa-id-card"></i> Identitas Resmi</h5>
@@ -241,118 +250,101 @@
                             <div class="invalid-feedback text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    <!-- Informasi Orang Tua/Wali -->
+                    <div class="col-12 mt-3">
+                        <h5 class="mb-3"><i class="fa fa-users"></i> Informasi Orang Tua/Wali</h5>
+                        <hr>
+                    </div>
                     <div class="row">
-                        <div class="col-12 mt-3">
-                            <h5 class="mb-3"><i class="fa fa-users"></i> Informasi Orang Tua/Wali</h5>
-                            <hr>
+                        <!-- Informasi Ayah -->
+                        <div class="col-md-6">
+                            <div class="card p-3 mb-3">
+                                <h6 class="mb-3"><i class="fa fa-male"></i> Informasi Ayah</h6>
+                                <div class="mb-3">
+                                    <label for="nama_ayah" class="form-label">Nama Ayah</label>
+                                    <input type="text" class="form-control" id="nama_ayah" name="nama_ayah"
+                                        value="{{ old('nama_ayah', $siswa->nama_ayah) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telp_ayah" class="form-label">Nomor Telepon Ayah</label>
+                                    <input type="text" class="form-control" id="telp_ayah" name="telp_ayah"
+                                        value="{{ old('telp_ayah', $siswa->telp_ayah) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pekerjaan_ayah" class="form-label">Pekerjaan Ayah</label>
+                                    <input type="text" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah"
+                                        value="{{ old('pekerjaan_ayah', $siswa->pekerjaan_ayah) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penghasilan_ayah" class="form-label">Penghasilan Ayah</label>
+                                    <input type="number" class="form-control" id="penghasilan_ayah"
+                                        name="penghasilan_ayah"
+                                        value="{{ old('penghasilan_ayah', $siswa->penghasilan_ayah) }}">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
-                            <label for="nama_ayah" class="form-label"><i class="fa fa-male"></i> Nama Ayah</label>
-                            <input type="text" class="form-control @error('nama_ayah') is-invalid @enderror"
-                                id="nama_ayah" name="nama_ayah" value="{{ old('nama_ayah') ?? $siswa->nama_ayah }}">
-                            @error('nama_ayah')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="pekerjaan_ayah" class="form-label"><i class="fa fa-briefcase"></i> Pekerjaan
-                                Ayah</label>
-                            <input type="text" class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
-                                id="pekerjaan_ayah" name="pekerjaan_ayah"
-                                value="{{ old('pekerjaan_ayah') ?? $siswa->pekerjaan_ayah }}">
-                            @error('pekerjaan_ayah')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="penghasilan_ayah" class="form-label"><i class="fa fa-money"></i> Penghasilan
-                                Ayah</label>
-                            <input type="number" class="form-control @error('penghasilan_ayah') is-invalid @enderror"
-                                id="penghasilan_ayah" name="penghasilan_ayah"
-                                value="{{ old('penghasilan_ayah') ?? $siswa->penghasilan_ayah }}">
-                            @error('penghasilan_ayah')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
+                        <!-- Informasi Ibu -->
+                        <div class="col-md-6">
+                            <div class="card p-3 mb-3">
+                                <h6 class="mb-3"><i class="fa fa-female"></i> Informasi Ibu</h6>
+                                <div class="mb-3">
+                                    <label for="nama_ibu" class="form-label">Nama Ibu</label>
+                                    <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"
+                                        value="{{ old('nama_ibu', $siswa->nama_ibu) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telp_ibu" class="form-label">Nomor Telepon Ibu</label>
+                                    <input type="text" class="form-control" id="telp_ibu" name="telp_ibu"
+                                        value="{{ old('telp_ibu', $siswa->telp_ibu) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pekerjaan_ibu" class="form-label">Pekerjaan Ibu</label>
+                                    <input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu"
+                                        value="{{ old('pekerjaan_ibu', $siswa->pekerjaan_ibu) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penghasilan_ibu" class="form-label">Penghasilan Ibu</label>
+                                    <input type="number" class="form-control" id="penghasilan_ibu"
+                                        name="penghasilan_ibu"
+                                        value="{{ old('penghasilan_ibu', $siswa->penghasilan_ibu) }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Informasi Wali -->
                     <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label for="nama_ibu" class="form-label"><i class="fa fa-female"></i> Nama Ibu</label>
-                            <input type="text" class="form-control @error('nama_ibu') is-invalid @enderror"
-                                id="nama_ibu" name="nama_ibu" value="{{ old('nama_ibu') ?? $siswa->nama_ibu }}">
-                            @error('nama_ibu')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="pekerjaan_ibu" class="form-label"><i class="fa fa-briefcase"></i> Pekerjaan
-                                Ibu</label>
-                            <input type="text" class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                id="pekerjaan_ibu" name="pekerjaan_ibu"
-                                value="{{ old('pekerjaan_ibu') ?? $siswa->pekerjaan_ibu }}">
-                            @error('pekerjaan_ibu')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="penghasilan_ibu" class="form-label"><i class="fa fa-money"></i> Penghasilan
-                                Ibu</label>
-                            <input type="number" class="form-control @error('penghasilan_ibu') is-invalid @enderror"
-                                id="penghasilan_ibu" name="penghasilan_ibu"
-                                value="{{ old('penghasilan_ibu') ?? $siswa->penghasilan_ibu }}">
-                            @error('penghasilan_ibu')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
+                        <div class="col-md-6 offset-md-3">
+                            <div class="card p-3 mb-3">
+                                <h6 class="mb-3"><i class="fa fa-user-friends"></i> Informasi Wali</h6>
+                                <div class="mb-3">
+                                    <label for="nama_wali" class="form-label">Nama Wali</label>
+                                    <input type="text" class="form-control" id="nama_wali" name="nama_wali"
+                                        value="{{ old('nama_wali', $siswa->nama_wali) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telp_wali" class="form-label">Nomor Telepon Wali</label>
+                                    <input type="text" class="form-control" id="telp_wali" name="telp_wali"
+                                        value="{{ old('telp_wali', $siswa->telp_wali) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pekerjaan_wali" class="form-label">Pekerjaan Wali</label>
+                                    <input type="text" class="form-control" id="pekerjaan_wali" name="pekerjaan_wali"
+                                        value="{{ old('pekerjaan_wali', $siswa->pekerjaan_wali) }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penghasilan_wali" class="form-label">Penghasilan Wali</label>
+                                    <input type="number" class="form-control" id="penghasilan_wali"
+                                        name="penghasilan_wali"
+                                        value="{{ old('penghasilan_wali', $siswa->penghasilan_wali) }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label for="nama_wali" class="form-label"><i class="fa fa-user-friends"></i> Nama
-                                Wali</label>
-                            <input type="text" class="form-control @error('nama_wali') is-invalid @enderror"
-                                id="nama_wali" name="nama_wali" value="{{ old('nama_wali') ?? $siswa->nama_wali }}">
-                            @error('nama_wali')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="pekerjaan_wali" class="form-label"><i class="fa fa-briefcase"></i> Pekerjaan
-                                Wali</label>
-                            <input type="text" class="form-control @error('pekerjaan_wali') is-invalid @enderror"
-                                id="pekerjaan_wali" name="pekerjaan_wali"
-                                value="{{ old('pekerjaan_wali') ?? $siswa->pekerjaan_wali }}">
-                            @error('pekerjaan_wali')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="penghasilan_wali" class="form-label"><i class="fa fa-money"></i> Penghasilan
-                                Wali</label>
-                            <input type="number" class="form-control @error('penghasilan_wali') is-invalid @enderror"
-                                id="penghasilan_wali" name="penghasilan_wali"
-                                value="{{ old('penghasilan_wali') ?? $siswa->penghasilan_wali }}">
-                            @error('penghasilan_wali')
-                                <div class="invalid-feedback text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    <div class="mb-2">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
                     </div>
-
-                </div>
-
-                <div class="mb-2">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Submit</button>
-                </div>
             </form>
         </div>
     </div>
