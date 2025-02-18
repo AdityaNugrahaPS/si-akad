@@ -171,6 +171,7 @@ Route::prefix('data-pengguna')->middleware('auth')->group(function () {
     Route::get('/edit/{dataPengguna}', [DataPenggunaController::class, 'edit'])->name('data-pengguna.edit');
     Route::patch('/edit/{dataPengguna}', [DataPenggunaController::class, 'update'])->name('data-pengguna.update');
     Route::delete('/{dataPengguna}', [DataPenggunaController::class, 'delete'])->name('data-pengguna.delete');
+    Route::patch('/data-pengguna/toggle/{id}', [DataPenggunaController::class, 'toggleActivation'])->name('data-pengguna.toggle');
 });
 
 // Grup routes

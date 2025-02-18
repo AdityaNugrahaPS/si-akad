@@ -8,6 +8,14 @@
     <link href="/assets/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet">
+    <style>
+        /* Pastikan semua teks di dalam tabel rata kiri */
+        #dataTable th,
+        #dataTable td {
+            text-align: left;
+            vertical-align: middle; /* Memastikan teks tetap sejajar secara vertikal */
+        }
+    </style>
 @endpush
 
 @push('js')

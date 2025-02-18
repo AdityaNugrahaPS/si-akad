@@ -70,43 +70,39 @@
                 <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Status</th>
-                            <th>Tahun</th>
-                            <th>Semester</th>
-                            <th>Kepala Sekolah</th>
-                            <th>Tanggal Rapor</th>
-                            <th>Action</th>
+                            <th class="text-start">Status</th>
+                            <th class="text-start">Tahun</th>
+                            <th class="text-start">Semester</th>
+                            <th class="text-start">Kepala Sekolah</th>
+                            <th class="text-start">Tanggal Rapor</th>
+                            <th class="text-start">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($tahunPelajarans as $tahunPelajaran)
                             <tr>
-                                <td class="{{ $tahunPelajaran->status === 'Aktif' ? 'status-active' : '' }}">
+                                <td class="text-start {{ $tahunPelajaran->status === 'Aktif' ? 'status-active' : '' }}">
                                     {{ $tahunPelajaran->status }}
                                 </td>
-                                <td>{{ $tahunPelajaran->tahun }}</td>
-                                <td>{{ $tahunPelajaran->semester }}</td>
-                                <td>{{ $tahunPelajaran->guru->nama_lengkap }}</td>
-                                <td>{{ $tahunPelajaran->tanggal_rapor }}</td>
-                                <td>
-                                    <a class="btn btn-primary"
-                                        href="{{ route('tahun-pelajaran.edit', $tahunPelajaran->id) }}">
+                                <td class="text-start">{{ $tahunPelajaran->tahun }}</td>
+                                <td class="text-start">{{ $tahunPelajaran->semester }}</td>
+                                <td class="text-start">{{ $tahunPelajaran->guru->nama_lengkap }}</td>
+                                <td class="text-start">{{ $tahunPelajaran->tanggal_rapor }}</td>
+                                <td class="text-start">
+                                    <a class="btn btn-primary" href="{{ route('tahun-pelajaran.edit', $tahunPelajaran->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form class="d-inline"
-                                        action="{{ route('tahun-pelajaran.delete', $tahunPelajaran->id) }}" method="post">
+                                    <form class="d-inline" action="{{ route('tahun-pelajaran.delete', $tahunPelajaran->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" type="submit">
                                             <i class="fa fa-trash"></i> Delete
                                         </button>
                                     </form>
-
+                
                                     @if ($tahunPelajaran->status !== 'Aktif')
                                         <!-- Form to activate status -->
-                                        <form class="d-inline"
-                                            action="{{ route('tahun-pelajaran.aktifkan', $tahunPelajaran->id) }}"
-                                            method="POST">
+                                        <form class="d-inline" action="{{ route('tahun-pelajaran.aktifkan', $tahunPelajaran->id) }}" method="POST">
                                             @csrf
                                             @method('POST')
                                             <button class="btn btn-warning" type="submit">
@@ -119,6 +115,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>

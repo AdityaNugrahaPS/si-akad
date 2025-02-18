@@ -51,23 +51,23 @@
                 <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>
-                            <th scope="col">Nama Guru</th>
-                            <th scope="col">Mata Pelajaran</th>
-                            <th scope="col">Kelas</th>
-                            <th scope="col">Tahun Pelajaran</th>
-                            <th scope="col">Semester</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="text-start">Nama Guru</th>
+                            <th scope="col" class="text-start">Mata Pelajaran</th>
+                            <th scope="col" class="text-start">Kelas</th>
+                            <th scope="col" class="text-start">Tahun Pelajaran</th>
+                            <th scope="col" class="text-start">Semester</th>
+                            <th scope="col" class="text-start">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pengajars as $pengajar)
                             <tr>
-                                <td>{{ $pengajar->guru->nama_lengkap }}</td>
-                                <td>{{ optional($pengajar->mataPelajaran)->nama_mata_pelajaran }}</td> 
-                                <td>{{ $pengajar->kelas->nama_kelas }}</td>
-                                <td>{{ $pengajar->tahun_pelajaran }}</td>
-                                <td>{{ $pengajar->semester }}</td>
-                                <td>
+                                <td class="text-start">{{ $pengajar->guru->nama_lengkap }}</td>
+                                <td class="text-start">{{ optional($pengajar->mataPelajaran)->nama_mata_pelajaran }}</td> 
+                                <td class="text-start">{{ $pengajar->kelas->nama_kelas }}</td>
+                                <td class="text-start">{{ $pengajar->tahun_pelajaran }}</td>
+                                <td class="text-start">{{ $pengajar->semester }}</td>
+                                <td class="text-start">
                                     <a class="btn btn-primary" href="{{ route('pengajar.edit', $pengajar->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
@@ -83,6 +83,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>

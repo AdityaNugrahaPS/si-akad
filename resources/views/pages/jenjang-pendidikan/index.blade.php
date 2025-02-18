@@ -60,15 +60,15 @@
       <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Action</th>
+            <th scope="col" class="text-start">Name</th>
+            <th scope="col" class="text-start">Action</th>
           </tr>
         </thead>
         <tbody>
           @foreach ($jenjangPendidikan as $jenjang)
             <tr>
-              <td>{{ $jenjang->jenjang_pendidikan }}</td>
-              <td>
+              <td class="text-start">{{ $jenjang->jenjang_pendidikan }}</td>
+              <td class="text-start">
                 <a class="btn btn-primary" href="{{ route('jenjang-pendidikan.edit', $jenjang->id) }}">
                   <i class="fa fa-edit"></i> Edit
                 </a>
@@ -83,6 +83,7 @@
             </tr>
           @endforeach
         </tbody>
+        
       </table>
     </div>
   </div>

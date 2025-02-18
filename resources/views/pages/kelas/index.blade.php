@@ -58,35 +58,36 @@ $(document).ready(function() {
 
       <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
         <thead>
-          <tr>
-            <th scope="col">Tingkat</th>
-            <th scope="col">Nama Kelas</th>
-            <th scope="col">Kode Kelas</th>
-            <th scope="col">Action</th>
-          </tr>
+            <tr>
+                <th class="text-start" scope="col">Tingkat</th>
+                <th class="text-start" scope="col">Nama Kelas</th>
+                <th class="text-start" scope="col">Kode Kelas</th>
+                <th class="text-start" scope="col">Action</th>
+            </tr>
         </thead>
         <tbody>
-          @foreach ($kelas as $kls)
-            <tr>
-              <td>{{ $kls->tingkat }}</td>
-              <td>{{ $kls->nama_kelas }}</td>
-              <td>{{ $kls->kode_kelas }}</td>
-              <td>
-                <a class="btn btn-primary" href="{{ route('kelas.edit', $kls->id) }}">
-                  <i class="fa fa-edit"></i> Edit
-                </a>
-                <form class="d-inline" action="{{ route('kelas.delete', $kls->id) }}" method="post">
-                  @csrf
-                  @method('delete')
-                  <button class="btn btn-danger" type="submit">
-                    <i class="fa fa-trash"></i> Delete
-                  </button>
-                </form>
-              </td>
-            </tr>
-          @endforeach
+            @foreach ($kelas as $kls)
+                <tr>
+                    <td class="text-start">{{ $kls->tingkat }}</td>
+                    <td class="text-start">{{ $kls->nama_kelas }}</td>
+                    <td class="text-start">{{ $kls->kode_kelas }}</td>
+                    <td class="text-start">
+                        <a class="btn btn-primary" href="{{ route('kelas.edit', $kls->id) }}">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                        <form class="d-inline" action="{{ route('kelas.delete', $kls->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger" type="submit">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
-      </table>
+    </table>
+    
     </div>
   </div>
 </div>

@@ -53,19 +53,19 @@
                 <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Nama Mata Pelajaran</th>
-                            <th>Kode Mata Pelajaran</th>
-                            <th>Kelompok</th>
-                            <th>Action</th>
+                            <th class="text-start">Nama Mata Pelajaran</th>
+                            <th class="text-start">Kode Mata Pelajaran</th>
+                            <th class="text-start">Kelompok</th>
+                            <th class="text-start">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($mataPelajaran as $mata)
                             <tr>
-                                <td>{{ $mata->nama_mata_pelajaran }}</td>
-                                <td>{{ $mata->kode_mata_pelajaran }}</td>
-                                <td>{{ $mata->kelompok }}</td>
-                                <td>
+                                <td class="text-start">{{ $mata->nama_mata_pelajaran }}</td>
+                                <td class="text-start">{{ $mata->kode_mata_pelajaran }}</td>
+                                <td class="text-start">{{ $mata->kelompok }}</td>
+                                <td class="text-start">
                                     <a class="btn btn-primary" href="{{ route('mata-pelajaran.edit', $mata->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
@@ -81,6 +81,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>

@@ -86,73 +86,73 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-
+                
                 <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>
-                            <th scope="col">Nama Lengkap</th>
-                            <th scope="col">Nama Panggilan</th>
-                            <th scope="col">Jenis Kelamin</th>
-                            <th scope="col">Agama</th>
-                            <th scope="col">Aktif</th>
-                            <th scope="col">NIS</th>
-                            <th scope="col">NIK</th>
-                            <th scope="col">NIKK</th>
-                            <th scope="col">Tanggal Lahir</th>
-                            <th scope="col">Tempat Lahir</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Kelurahan</th>
-                            <th scope="col">Kecamatan</th>
-                            <th scope="col">Kota</th>
-                            <th scope="col">Provinsi</th>
-                            <th scope="col">Kode Pos</th>
-                            <th scope="col">Nama Ayah</th>
-                            <th scope="col">Pekerjaan Ayah</th>
-                            <th scope="col">Penghasilan Ayah</th>
-                            <th scope="col">Nama Ibu</th>
-                            <th scope="col">Pekerjaan Ibu</th>
-                            <th scope="col">Penghasilan Ibu</th>
-                            <th scope="col">Nama Wali</th>
-                            <th scope="col">Pekerjaan Wali</th>
-                            <th scope="col">Penghasilan Wali</th>
-                            <th scope="col">Foto</th>
-                            <th scope="col">Tahun Masuk</th>
-                            <th scope="col">Telp Siswa</th>
-                            <th scope="col">Telp Ayah</th>
-                            <th scope="col">Telp Ibu</th>
-                            <th scope="col">Telp Wali</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="text-start">Nama Lengkap</th>
+                            <th scope="col" class="text-start">Nama Panggilan</th>
+                            <th scope="col" class="text-start">Jenis Kelamin</th>
+                            <th scope="col" class="text-start">Agama</th>
+                            <th scope="col" class="text-start">Aktif</th>
+                            <th scope="col" class="text-start">NIS</th>
+                            <th scope="col" class="text-start">NIK</th>
+                            <th scope="col" class="text-start">NIKK</th>
+                            <th scope="col" class="text-start">Tanggal Lahir</th>
+                            <th scope="col" class="text-start">Tempat Lahir</th>
+                            <th scope="col" class="text-start">Alamat</th>
+                            <th scope="col" class="text-start">Kelurahan</th>
+                            <th scope="col" class="text-start">Kecamatan</th>
+                            <th scope="col" class="text-start">Kota</th>
+                            <th scope="col" class="text-start">Provinsi</th>
+                            <th scope="col" class="text-start">Kode Pos</th>
+                            <th scope="col" class="text-start">Nama Ayah</th>
+                            <th scope="col" class="text-start">Pekerjaan Ayah</th>
+                            <th scope="col" class="text-start">Penghasilan Ayah</th>
+                            <th scope="col" class="text-start">Nama Ibu</th>
+                            <th scope="col" class="text-start">Pekerjaan Ibu</th>
+                            <th scope="col" class="text-start">Penghasilan Ibu</th>
+                            <th scope="col" class="text-start">Nama Wali</th>
+                            <th scope="col" class="text-start">Pekerjaan Wali</th>
+                            <th scope="col" class="text-start">Penghasilan Wali</th>
+                            <th scope="col" class="text-start">Foto</th>
+                            <th scope="col" class="text-start">Tahun Masuk</th>
+                            <th scope="col" class="text-start">Telp Siswa</th>
+                            <th scope="col" class="text-start">Telp Ayah</th>
+                            <th scope="col" class="text-start">Telp Ibu</th>
+                            <th scope="col" class="text-start">Telp Wali</th>
+                            <th scope="col" class="text-start">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($siswas as $siswa)
                             <tr>
-                                <td>{{ $siswa->nama_lengkap }}</td>
-                                <td>{{ $siswa->nama_panggilan }}</td>
-                                <td>{{ $siswa->jenis_kelamin }}</td>
-                                <td>{{ $siswa->agama }}</td>
-                                <td>{{ $siswa->aktif ? 'Aktif' : 'Tidak Aktif' }}</td>
-                                <td>{{ $siswa->nis }}</td>
-                                <td>{{ $siswa->nik }}</td>
-                                <td>{{ $siswa->nikk }}</td>
-                                <td>{{ $siswa->tanggal_lahir }}</td>
-                                <td>{{ $siswa->tempat_lahir }}</td>
-                                <td>{{ $siswa->alamat }}</td>
-                                <td>{{ $siswa->kelurahan }}</td>
-                                <td>{{ $siswa->kecamatan }}</td>
-                                <td>{{ $siswa->kota }}</td>
-                                <td>{{ $siswa->provinsi }}</td>
-                                <td>{{ $siswa->kode_pos }}</td>
-                                <td>{{ $siswa->nama_ayah }}</td>
-                                <td>{{ $siswa->pekerjaan_ayah }}</td>
-                                <td>{{ $siswa->penghasilan_ayah }}</td>
-                                <td>{{ $siswa->nama_ibu }}</td>
-                                <td>{{ $siswa->pekerjaan_ibu }}</td>
-                                <td>{{ $siswa->penghasilan_ibu }}</td>
-                                <td>{{ $siswa->nama_wali }}</td>
-                                <td>{{ $siswa->pekerjaan_wali }}</td>
-                                <td>{{ $siswa->penghasilan_wali }}</td>
-                                <td>
+                                <td class="text-start">{{ $siswa->nama_lengkap }}</td>
+                                <td class="text-start">{{ $siswa->nama_panggilan }}</td>
+                                <td class="text-start">{{ $siswa->jenis_kelamin }}</td>
+                                <td class="text-start">{{ $siswa->agama }}</td>
+                                <td class="text-start">{{ $siswa->aktif ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                <td class="text-start">{{ $siswa->nis }}</td>
+                                <td class="text-start">{{ $siswa->nik }}</td>
+                                <td class="text-start">{{ $siswa->nikk }}</td>
+                                <td class="text-start">{{ $siswa->tanggal_lahir }}</td>
+                                <td class="text-start">{{ $siswa->tempat_lahir }}</td>
+                                <td class="text-start">{{ $siswa->alamat }}</td>
+                                <td class="text-start">{{ $siswa->kelurahan }}</td>
+                                <td class="text-start">{{ $siswa->kecamatan }}</td>
+                                <td class="text-start">{{ $siswa->kota }}</td>
+                                <td class="text-start">{{ $siswa->provinsi }}</td>
+                                <td class="text-start">{{ $siswa->kode_pos }}</td>
+                                <td class="text-start">{{ $siswa->nama_ayah }}</td>
+                                <td class="text-start">{{ $siswa->pekerjaan_ayah }}</td>
+                                <td class="text-start">{{ $siswa->penghasilan_ayah }}</td>
+                                <td class="text-start">{{ $siswa->nama_ibu }}</td>
+                                <td class="text-start">{{ $siswa->pekerjaan_ibu }}</td>
+                                <td class="text-start">{{ $siswa->penghasilan_ibu }}</td>
+                                <td class="text-start">{{ $siswa->nama_wali }}</td>
+                                <td class="text-start">{{ $siswa->pekerjaan_wali }}</td>
+                                <td class="text-start">{{ $siswa->penghasilan_wali }}</td>
+                                <td class="text-start">
                                     @if ($siswa->foto)
                                         <!-- Tambahkan kelas "zoomable" dan atribut data-photo -->
                                         <img src="{{ asset('storage/' . $siswa->foto) }}" width="50" height="50"
@@ -162,12 +162,12 @@
                                         <span class="badge bg-secondary">No Photo</span>
                                     @endif
                                 </td>
-                                <td>{{ $siswa->tahun_masuk }}</td>
-                                <td>{{ $siswa->telp_siswa }}</td>
-                                <td>{{ $siswa->telp_ayah }}</td>
-                                <td>{{ $siswa->telp_ibu }}</td>
-                                <td>{{ $siswa->telp_wali }}</td>
-                                <td>
+                                <td class="text-start">{{ $siswa->tahun_masuk }}</td>
+                                <td class="text-start">{{ $siswa->telp_siswa }}</td>
+                                <td class="text-start">{{ $siswa->telp_ayah }}</td>
+                                <td class="text-start">{{ $siswa->telp_ibu }}</td>
+                                <td class="text-start">{{ $siswa->telp_wali }}</td>
+                                <td class="text-start">
                                     <a class="btn btn-primary" href="{{ route('siswa.edit', $siswa->id) }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
@@ -183,7 +183,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                
                 <!-- Modal untuk menampilkan foto dalam mode zoom -->
                 <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">

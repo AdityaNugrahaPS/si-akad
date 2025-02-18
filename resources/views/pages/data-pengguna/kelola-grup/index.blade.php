@@ -7,6 +7,14 @@
     <link href="/assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="/assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet">
+    <style>
+        /* Pastikan semua teks di dalam tabel rata kiri */
+        #dataTable th,
+        #dataTable td {
+            text-align: left;
+            vertical-align: middle; /* Pastikan teks tetap sejajar secara vertikal */
+        }
+    </style>
 @endpush
 
 @push('js')
@@ -14,6 +22,13 @@
     <script src="/assets/plugins/datatables.net/js/dataTables.min.js"></script>
     <script src="/assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
     <script src="/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                scrollX: true
+            });
+        });
+    </script>
 @endpush
 
 @section('content')
@@ -32,6 +47,13 @@
     <div class="card">
         <div class="row justify-content-center">
             <div class="col-xl-11 my-5">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+                        <strong><i class="fa fa-check-circle"></i></strong> {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                     <thead>
                         <tr>

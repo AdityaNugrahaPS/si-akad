@@ -50,21 +50,21 @@
             <table id="dataTable" class="table table-striped table-bordered text-nowrap w-100">
                 <thead>
                     <tr>
-                        <th scope="col">Tahun Pelajaran</th>
-                        <th scope="col">Semester</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Nama Siswa</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-start">Tahun Pelajaran</th>
+                        <th scope="col" class="text-start">Semester</th>
+                        <th scope="col" class="text-start">Kelas</th>
+                        <th scope="col" class="text-start">Nama Siswa</th>
+                        <th scope="col" class="text-start">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($rombels as $rombel)
                         <tr>
-                            <td>{{ $rombel->tahun_pelajaran }}</td>
-                            <td>{{ ucfirst($rombel->semester) }}</td>
-                            <td>{{ $rombel->kelas->nama_kelas }}</td>
-                            <td>{{ optional($rombel->siswa)->nama_lengkap ?? 'Tidak Ada Siswa' }}</td> <!-- Menghindari error jika siswa null -->
-                            <td>
+                            <td class="text-start">{{ $rombel->tahun_pelajaran }}</td>
+                            <td class="text-start">{{ ucfirst($rombel->semester) }}</td>
+                            <td class="text-start">{{ $rombel->kelas->nama_kelas }}</td>
+                            <td class="text-start">{{ optional($rombel->siswa)->nama_lengkap ?? 'Tidak Ada Siswa' }}</td> <!-- Menghindari error jika siswa null -->
+                            <td class="text-start">
                                 <a class="btn btn-primary" href="{{ route('rombel.edit', $rombel->id) }}">
                                     <i class="fa fa-edit"></i> Edit
                                 </a>
@@ -80,6 +80,7 @@
                     @endforeach
                 </tbody>
             </table>
+            
         </div>
     </div>
 </div>

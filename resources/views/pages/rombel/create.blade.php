@@ -29,7 +29,7 @@
 
           <div class="col-md-6 mb-3">
             <label for="tahun_pelajaran" class="form-label"><i class="fa fa-calendar"></i> Tahun Pelajaran<span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('tahun_pelajaran') is-invalid @enderror" id="tahun_pelajaran" name="tahun_pelajaran" value="{{ old('tahun_pelajaran') }}">
+            <input type="text" class="form-control @error('tahun_pelajaran') is-invalid @enderror" id="tahun_pelajaran" name="tahun_pelajaran" value="{{ old('tahun_pelajaran') }}" placeholder="yyyy/yyyy">
             @error('tahun_pelajaran')
               <div class="invalid-feedback text-danger">
                 {{ $message }}
